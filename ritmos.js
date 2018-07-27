@@ -161,7 +161,7 @@ $('a.recoreco-samba').click(function (e)
 $('a.recoreco-congo').click(function (e)
 {
     $('#exampleModalLabel').html('Casaca do congo');
-    var dados ="%%MIDI drummap A 82  \n" +
+    var dados ="%%MIDI drummap A 74  \n" +
             "%%MIDI beat 20 20 64 20 \n"+
             "%%score (V0)\n" +
             "V:V0 clef=perc stafflines=1\n" +
@@ -169,7 +169,7 @@ $('a.recoreco-congo').click(function (e)
             "M: 2/4\n" +
             "K:C perc\n" +
             "L: 1/16\n" +
-            "|: A2!>!AA A2!>!AA :|";
+            "|: A2!>!AA A2!>!AA  | A2!>!AA A2!>!AA :|";
     render(dados);
     e.preventDefault();
 });
@@ -177,11 +177,13 @@ $('a.recoreco-congo').click(function (e)
 $('a.recoreco-frevo').click(function (e)
 {
     $('#exampleModalLabel').html('Reco-reco do frevo');
-    var dados = "M: 2/4\n" +
-            "Q:1/4=80\n" +
+    var dados = "%%MIDI drummap A 74  \n" +
+            "%%MIDI beat 20 20 64 20 \n"+
+            "%%score (V0)\n" +
             "V:V0 clef=perc stafflines=1\n" +
-            "%%voicemap percussion\n" +
-            "%%MIDI channel 10\n" +
+            "Q:1/4=100\n" +
+            "M: 2/4\n" +
+            "K:C perc\n" +
             "L: 1/16\n" +
             "|: z2AA z2AA :|";
     render(dados);
@@ -267,9 +269,25 @@ $('a.tarol-maracatu').click(function (e)
     e.preventDefault();
 });
 
+$('a.tarol-samba').click(function (e)
+{
+    $('#exampleModalLabel').html('Tarol do samba');
+    var dados = "%%MIDI drummap A 38  \n" +
+            "%%MIDI beat 30 30 30 1 \n" +
+            "%%score (V0)\n" +
+            "V:V0 clef=perc stafflines=1\n" +
+            "Q:1/4=130\n" +
+            "M: 2/4\n" +
+            "K:C perc\n" +
+            "L: 1/16\n" +
+            "|: !>!AAA!>!A !>!AAA!>!A :|";
+    render(dados);
+    e.preventDefault();
+});
+
 $('a.caixa-guerra-maracatu').click(function (e)
 {
-    $('#exampleModalLabel').html('Tarol do maracatú');
+    $('#exampleModalLabel').html('Caixa de guerra do maracatú');
     var dados = "%%MIDI drummap A   38\n" +
             "%%MIDI drummap B   67\n" +
             "%%MIDI beat 40 20 20 1 \n" +
@@ -280,6 +298,22 @@ $('a.caixa-guerra-maracatu').click(function (e)
             "K:C perc\n" +
              "L: 1/16\n" +
             "|: AA2A !>!A2A2 AA2A   !>!A/2A/2A/2A/2A/2A/2A/2A/2 :|";
+    render(dados);
+    e.preventDefault();
+});
+
+$('a.alfaia-maracatu').click(function (e)
+{
+    $('#exampleModalLabel').html('Alfaia do maracatú');
+    var dados = "%%MIDI drummap A   87\n" +
+            "%%MIDI drummap B   86\n" +
+            "%%score (V0)\n" +
+            "V:V0 clef=perc stafflines=1\n" +
+            "Q:1/4=100\n" +
+            "M: 4/4\n" +
+            "K:C perc\n" +
+             "L: 1/16\n" +
+            "|: !>!A4 B!>!A3 B!>!A3 B!>!A3 :|";
     render(dados);
     e.preventDefault();
 });
