@@ -244,7 +244,7 @@ var flatten;
 		// If there are guitar chords, then they are put in a separate track, but they have the same format.
 		//
 
-		var velocity = voiceOff ? 0 : 64;
+		var velocity = voiceOff ? 0 : elem.velocity;
 		var chord = findChord(elem);
 		if (chord) {
 			var c = interpretChord(chord);

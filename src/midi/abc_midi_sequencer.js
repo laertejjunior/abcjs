@@ -174,6 +174,7 @@ var sequence;
 								case "note":
 									// regular items are just pushed.
 									if (!elem.rest || elem.rest.type !== 'spacer') {
+                                                                                elem['velocity'] = interpretVelocity(abctune, elem, noteEventsInBar)
 										voices[voiceNumber].push(elem);
 										noteEventsInBar++;
 									}
@@ -285,6 +286,28 @@ var sequence;
 		}
 		return voices;
 	};
+        
+        function interpretVelocity(abctune, element, noteEventsInBar) {
+            var velocity = 64;
+            if(abctune.formatting.midi.beat) {
+                var strongNote = abctune.formatting.midi.beat[3];
+                if(noteEventsInBar === 0) {
+                    velocity = abctune.formatting.midi.beat[0];  
+                } else if (!(noteEventsInBar % strongNote)) {
+                    velocity =  abctune.formatting.midi.beat[strongNote]; 
+                } else {
+                    velocity = abctune.formatting.midi.beat[2]; 
+                }
+            }
+            if(element.decoration) {
+                if(element.decoration.indexOf("accent") !== -1)
+                {  
+                    velocity = 127;
+                }
+            }
+            
+            return velocity;
+        }
 
 	function interpretTempo(element) {
 		var duration = 1/4;
